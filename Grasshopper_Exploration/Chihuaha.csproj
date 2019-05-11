@@ -56,8 +56,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GrasshopperExplorationComponent.cs" />
+    <Compile Include="Chihuaha.cs" />
+    <Compile Include="Generation.cs" />
+    <Compile Include="ChihuahaComponent.cs" />
     <Compile Include="Grasshopper_ExplorationInfo.cs" />
+    <Compile Include="Individual.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -69,7 +72,7 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>Copy "$(TargetPath)" "$(TargetDir)$(ProjectName).gha"
+    <PostBuildEvent>Copy "$(TargetPath)" "C:\Users\ppaab\AppData\Roaming\Grasshopper\Libraries\Exploration.gha"
 Erase "$(TargetPath)"</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
