@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Grasshopper_Exploration
+namespace Chihuahua
 {
     public class Generation
     {
         public readonly List<Individual> populations;
-        readonly decimal bestFitness;
-        readonly Individual bestIndividual;
+        public readonly decimal bestFitness;
+        public readonly Individual bestIndividual;
 
         public Generation(List<Individual> unordered)
         {

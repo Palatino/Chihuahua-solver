@@ -14,9 +14,9 @@ using Rhino.Geometry;
 // folder in Grasshopper.
 // You can use the _GrasshopperDeveloperSettings Rhino command for that.
 
-namespace Grasshopper_Exploration
+namespace Chihuahua
 {
-    public class ChihuahaComponent : GH_Component
+    public class ChihuahuaComponent : GH_Component
     {
         /// <summary>
         /// Each implementation of GH_Component must provide a public 
@@ -27,13 +27,11 @@ namespace Grasshopper_Exploration
         /// </summary>
         /// 
 
-        Random random;
-        public ChihuahaComponent()
-          : base("Grasshopper_Exploration", "Nickname",
-              "Description",
+        public ChihuahuaComponent()
+          : base("Chihuahua Solver", "Chihuahuha",
+              "Basic Evolutive Solver",
               "Useless Components", "Evolutive Solver")
         {
-            random = new Random();
         }
 
         /// <summary>
@@ -41,7 +39,7 @@ namespace Grasshopper_Exploration
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddNumberParameter("Variables", "variables", "variables", GH_ParamAccess.list);
+            pManager.AddNumberParameter("Genes", "Genes", "Genes to optimize, must be number sliders", GH_ParamAccess.list);
             pManager.AddNumberParameter("Fitness", "Fitness", "Fitness Value", GH_ParamAccess.item);
             pManager.AddBooleanParameter("Maximize (T), Minimize (F)", "M/m", "Choose  whether to maximize or minimize goal ", GH_ParamAccess.item, true);
 
@@ -75,7 +73,7 @@ namespace Grasshopper_Exploration
             {
                 // You can add image files to your project resources and access them like this:
                 //return Resources.IconForThisComponent;
-                return null;
+                return Properties.Resources.Chihuahua;
             }
         }
 
@@ -97,11 +95,27 @@ namespace Grasshopper_Exploration
 
         private void SolverClicked(object sender, EventArgs eventArgs)
         {
-            Generation gen1 = Chihuaha.CreateRandomGeneration(this, 20);
-            foreach (Individual ind in gen1.populations)
+            Generation gen1 = Chihuahua.CreateRandomGeneration(this, 50);
+            for (int i =0; i<22; i++)
             {
-                Rhino.RhinoApp.WriteLine(ind.Fitness.ToString());
+                Generation next = Chihuahua.EvolveGeneration(this, gen1, 5, 50, 0.1);
+                gen1 = next;
             }
+
+            Rhino.RhinoApp.WriteLine(string.Format("Best fitness: {0}", gen1.bestFitness));
+
+            foreach( decimal gen in gen1.bestIndividual.Genome)
+            {
+                Rhino.RhinoApp.WriteLine(gen.ToString());
+
+            }
+
+            //Reinstate the best solution back the grasshopper canvas
+
+            Chihuahua.ReinstateGenome(this, gen1.bestIndividual.NormalizeGenome);
+            
+
+
         }
 
     }

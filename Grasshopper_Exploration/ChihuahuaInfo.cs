@@ -2,15 +2,15 @@
 using System.Drawing;
 using Grasshopper.Kernel;
 
-namespace Grasshopper_Exploration
+namespace Chihuahua
 {
-    public class Grasshopper_ExplorationInfo : GH_AssemblyInfo
+    public class ChihuahaSolver : GH_AssemblyInfo
     {
         public override string Name
         {
             get
             {
-                return "GrasshopperExploration";
+                return "Chihuaha Solver";
             }
         }
         public override Bitmap Icon

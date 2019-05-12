@@ -56,12 +56,27 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Chihuaha.cs" />
+    <Compile Include="Chihuahua.cs" />
     <Compile Include="Generation.cs" />
     <Compile Include="ChihuahaComponent.cs" />
-    <Compile Include="Grasshopper_ExplorationInfo.cs" />
+    <Compile Include="ChihuahuaInfo.cs" />
+    <Compile Include="Helpers.cs" />
     <Compile Include="Individual.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Chihuahua.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
